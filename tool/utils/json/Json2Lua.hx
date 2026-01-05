@@ -36,7 +36,7 @@ class Json2Lua extends JsonPrinter
 				add('"???"');
 			case TObject:
 				objString(v);
-			case TInt:
+			case TInt #if (haxe >= "5.0.0"), TInt64 #end:
 				add(#if (jvm || hl) Std.string(v) #else v #end);
 			case TFloat:
 				add(Math.isFinite(v) ? Std.string(v) : 'null');
